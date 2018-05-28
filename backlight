@@ -7,9 +7,9 @@
 start() {
     ebegin 'Restoring the screen brightness'
     
-    for card in `basename $(find /sys/class/backlight/ -type l)`; do
-        if [[ -r "/var/cache/backlight/$card-brightness-old" ]]; then
-            cp "/var/cache/backlight/$card-brightness-old" "/sys/class/backlight/$card/brightness"
+for card in `find /sys/class/backlight/ -type l`; do
+        if [[ -r "/var/cache/backlight/`basename $card`-brightness-old" ]]; then
+            cp "/var/cache/backlight/`basename $card`-brightness-old" "/sys/class/backlight/`basename $card`/brightness"
         fi
     done
 
@@ -25,8 +25,8 @@ stop() {
         chmod 755 '/var/cache/backlight/'
     fi
     
-    for card in `basename $(find /sys/class/backlight/ -type l)`; do
-        cp "/sys/class/backlight/$card/brightness" "/var/cache/backlight/$card-brightness-old"
+for card in `find /sys/class/backlight/ -type l`; do
+        cp "/sys/class/backlight/`basename $card`/brightness" "/var/cache/backlight/`basename $card`-brightness-old"
     done
     eend $?
 }
