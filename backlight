@@ -1,8 +1,7 @@
 #!/sbin/openrc-run
-# created by jacopo@autistici.org
+# created by jacopo@autistici.org, with patch from Raphael Costa Raphael
 # with this software you have no kind of support.
 #
-# copyleft (c) 2015
 
 start() {
     ebegin 'Restoring the screen brightness'
