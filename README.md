@@ -1,8 +1,6 @@
 backlight-openrc
 ================
 
-#THIS SCRIPT IS DISCONTINUED, I'M NOT MANTAINIG IT ANYMORE, IF YOU WANT YOU ARE FREE TO FORK IT (READ LICENSE.TXT)
-
 Save the screen light settings at shutdown and restore it at boot time, using OpenRC init scripts.
 
 # Installation
