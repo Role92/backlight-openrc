@@ -4,8 +4,11 @@ backlight-openrc
 Save the screen light settings at shutdown and restore it at boot time, using OpenRC init scripts.
 
 # Installation
-### Arch Linux Based
+### Arch Linux
 1. Install the package using the [AUR tar ball](https://aur.archlinux.org/packages/backlight-openrc/)
+
+### Artix Linux
+1. Install the package with *pacman -S backlight-openrc*
 
 ### Non Arch Linux Based
 1. Clone this repo
