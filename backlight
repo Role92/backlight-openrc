@@ -6,9 +6,9 @@
 start() {
     ebegin 'Restoring the screen brightness'
     
-for card in `find /sys/class/backlight/ -type l`; do
-        if [[ -r "/var/cache/backlight/`basename $card`-brightness-old" ]]; then
-            cp "/var/cache/backlight/`basename $card`-brightness-old" "/sys/class/backlight/`basename $card`/brightness"
+for card in "$(find /sys/class/backlight/ -type l)"; do
+        if [ -r "/var/cache/backlight/$(basename $card)-brightness-old" ]; then
+            cp "/var/cache/backlight/$(basename $card)-brightness-old" "/sys/class/backlight/$(basename $card)/brightness"
         fi
     done
 
@@ -17,15 +17,15 @@ for card in `find /sys/class/backlight/ -type l`; do
 
 stop() {
     ebegin 'Saving the screen brightness'
-    if ! [[ -d '/var/cache/backlight/' ]]; then
+    if ! [ -d '/var/cache/backlight/' ]; then
         mkdir '/var/cache/backlight'
     fi
-    if ! [[ -w '/var/cache/backlight/' ]]; then
+    if ! [ -w '/var/cache/backlight/' ]; then
         chmod 755 '/var/cache/backlight/'
     fi
     
-for card in `find /sys/class/backlight/ -type l`; do
-        cp "/sys/class/backlight/`basename $card`/brightness" "/var/cache/backlight/`basename $card`-brightness-old"
+for card in "$(find /sys/class/backlight/ -type l)"; do
+        cp "/sys/class/backlight/$(basename $card)/brightness" "/var/cache/backlight/$(basename $card)-brightness-old"
     done
     eend $?
 }
